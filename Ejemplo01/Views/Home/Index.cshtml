@@ -1,0 +1,27 @@
+﻿@model List<Amigo>
+
+
+@{ 
+    ViewBag.Title = "Amigos Indice";
+
+}
+ 
+<div class="card-deck">
+    @foreach (var amigo in Model)
+    {
+        var rutaFoto = "~/images/" + (amigo.RutaFoto ?? "ChicaCodigo.jpg");
+
+    <div class="card m-3" style="min-width:18rem;max-width:30.5%">
+        <div class="card-header" >  
+            <h3>@amigo.Nombre</h3>
+        </div>
+        <img class="card-img-top imagen" src="@rutaFoto" asp-append-version="true" alt="Ejemplo de Imagen" />
+        <div class="card-footer text-center">
+            <a asp-controller="home" asp-action="details" asp-route-id="@amigo.Id" class="btn btn-primary m-1">Ver</a> 
+            <a asp-controller="home" asp-action="edit" asp-route-id="@amigo.Id"  class="btn btn-primary m-1">Editar</a>
+            <a asp-controller="home" asp-action="delete" asp-route-id="@amigo.Id" class="btn btn-danger m-1">Borrar</a>
+        </div>
+    </div>
+         
+    }
+</div>
